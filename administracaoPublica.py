@@ -89,21 +89,39 @@ while True:
 ##parte d qm for fazer o exibir
 
     elif opcao == "3":
-        print("parte de editar")
+      arq = open('dados.json', 'r', encoding='utf-8')
+      dados = json.load(arq)
+      arq.close()
 
-##parte d qm for fazer a edicao
+      print("editar servidor")
+
+      id_editar = input("Digite o ID do servidor: ")
+
+      for servidor in dados:
+       if str(servidor['id']) == id_editar:
+
+        print("Nome atual:", servidor['nome'])
+        print("Cargo atual:", servidor['cargo'])
+        print("Órgão atual:", servidor['orgao'])
+        print("Matrícula atual:", servidor['matricula'])
+
+        servidor['nome'] = input("Novo nome: ")
+        servidor['cargo'] = input("Novo cargo: ")
+        servidor['orgao'] = input("Novo órgão: ")
+        servidor['matricula'] = input("Nova matrícula: ")
+
     elif opcao == "4":
-        print("parte de deletar")
+     print("parte de deletar")
 
 ##parte d qm for fazer o delete
     elif opcao == "5":
-        print("parte de pesquisa")
+                    print("parte de pesquisa")
 
 ##parte d qm for fazer a pesquisa
 
     elif opcao == "6":
 
-        print("parte de gerar o relatorio")
+                    print("parte de gerar o relatorio")
 
 ##parte d qm for fazer o relatorio
 
@@ -111,12 +129,12 @@ while True:
 
     elif opcao == "0":
 
-        print("parte de sair")
+                    print("parte de sair")
 
-        break
+    break
 
-    else:
+else:
 
-         print("opcao invalido")
+     print("opcao invalido")
 
 
