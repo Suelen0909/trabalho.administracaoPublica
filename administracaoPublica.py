@@ -109,6 +109,16 @@ while True:
         servidor['cargo'] = input("Novo cargo: ")
         servidor['orgao'] = input("Novo órgão: ")
         servidor['matricula'] = input("Nova matrícula: ")
+    arq = open('dados.json', 'w', encoding='utf-8')
+    json.dump(dados, arq, ensure_ascii=False, indent=4)
+    arq.close()
+
+    print("Servidor editado")
+
+    break
+
+    if encontrado == False:
+            print("ID não encontrado")
 
     elif opcao == "4":
      print("parte de deletar")
