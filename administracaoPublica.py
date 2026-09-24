@@ -89,6 +89,7 @@ while True:
 ##parte d qm for fazer o exibir
 
     elif opcao == "3":
+<<<<<<< HEAD
       arq = open('dados.json', 'r', encoding='utf-8')
       dados = json.load(arq)
       arq.close()
@@ -99,20 +100,53 @@ while True:
     encontrado = False 
             
     for servidor in dados:
+=======
+        arq = open('dados.json', 'a', encoding='utf-8')
+        arq.close()
+
+        arq = open('dados.json', 'r', encoding='utf-8')
+        conteudo = arq.read().strip()
+        arq.close()
+            
+        if conteudo == '':
+                dados = []
+
+        else:
+            arq = open('dados.json', 'r', encoding='utf-8')
+            dados = json.load(arq)
+            arq.close()
+                
+            print('\n Editar servidor')
+            id_editar = input('Digite o ID do servidor: ').strip()
+            
+            encontrado = False 
+            
+            for servidor in dados:
+>>>>>>> 674e6563e184f8a9d0255eb7b2790a861e246b71
                 if str(servidor['id']) == id_editar:
                     print('Nome atual:', servidor['nome'])
                     print('Cargo atual:', servidor['cargo'])
                     print('Órgão atual:', servidor['orgao'])
+<<<<<<< HEAD
                     print('Matrícula atual:', servidor['matrícula'])
                     
                     servidor['nome'] = input('Novo nome: ')
                     servidor['cargo'] = input('Novo cargo: ')
                     servidor['orgao'] = input('Novo órgão: ')
                     servidor['matrícula'] = input('Nova matrícula: ')
+=======
+                    print('Matrícula atual:', servidor['matricula'])
+                    
+                    servidor['nome'] = input('Novo nome: ').strip()
+                    servidor['cargo'] = input('Novo cargo: ').strip()
+                    servidor['orgao'] = input('Novo órgão: ').strip()
+                    servidor['matricula'] = input('Nova matrícula: ').strip()
+>>>>>>> 674e6563e184f8a9d0255eb7b2790a861e246b71
                     
                     arq = open('dados.json', 'w', encoding='utf-8')
                     json.dump(dados, arq, ensure_ascii=False, indent=4)
                     arq.close()
+<<<<<<< HEAD
                     print('Servidor editado com sucesso.')
                     
                     encontrado = True
@@ -120,8 +154,38 @@ while True:
                     
     if encontrado == False:
                 print('ID não encontrado.')
+=======
+                    
+                    print('Servidor editado')
+                    encontrado = True
+                    break
+                    
+            if encontrado == False:
+                print('ID não encontrado.')
+
+>>>>>>> 674e6563e184f8a9d0255eb7b2790a861e246b71
     elif opcao == "4":
-     print("parte de deletar")
+        print("parte de deletar")
+        arq = open('dados.json', 'r', encoding='utf-8')
+        dados = json.load(arq)
+        arq.close()
+
+        id_deletar = input ("Qual id deseja deletar?")
+        encontrado = False
+    for servidor in dados:
+            if str (servidor['id']) == id_deletar:
+                  encontrado = True
+            print("id", servidor ['id'])
+            print("nome", servidor ['nome'])
+            print("orgao", servidor ['orgao'])
+            print("matricula", servidor ['matricula'])
+
+    confirmacao = input ("realmente deseja deletar esse servidor? (S/N) ou (s/n) ").lower
+    if confirmacao == 'S' or 's':
+          dados 
+
+
+
 
 ##parte d qm for fazer o delete
     elif opcao == "5":

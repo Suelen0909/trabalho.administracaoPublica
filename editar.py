@@ -1,33 +1,51 @@
 import json
-
-arq = open('dados.json', 'r', encoding='utf-8')
-dados = json.load(arq)
+arq = open('dados.json', 'a', encoding='utf-8')
 arq.close()
 
-print("editar servidor")
+arq = open('dados.json', 'r', encoding='utf-8')
+conteudo = arq.read().strip()
+arq.close()
 
-id_editar = input("Digite o ID do servidor: ")
+if conteudo == "":
+            dados = []
+else:
+            arq = open('dados.json', 'r', encoding='utf-8')
+            dados = json.load(arq)
+            arq.close()
 
-for servidor in dados:
-    if str(servidor['id']) == id_editar:
+if len(dados) == 0:
+            print("Não existem servidores cadastrados.")
 
-        print("Nome atual:", servidor['nome'])
-        print("Cargo atual:", servidor['cargo'])
-        print("Órgão atual:", servidor['orgao'])
-        print("Matrícula atual:", servidor['matricula'])
+else:
+            print('\n Editar servidor público')
 
-        servidor['nome'] = input("Novo nome: ")
-        servidor['cargo'] = input("Novo cargo: ")
-        servidor['orgao'] = input("Novo órgão: ")
-        servidor['matricula'] = input("Nova matrícula: ")
+            id_editar = input('Digite o ID do servidor: ')
 
-    arq = open('dados.json', 'w', encoding='utf-8')
-    json.dump(dados, arq, ensure_ascii=False, indent=4)
-    arq.close()
+            encontrado = False
 
-    print("Servidor editado")
+            for servidor in dados:
 
-    break
+                if str(servidor['id']) == id_editar:
 
-    if encontrado == False:
-            print("ID não encontrado")
+                    print('Nome atual:', servidor['nome'])
+                    print('Cargo atual:', servidor['cargo'])
+                    print('Órgão atual:', servidor['orgao'])
+                    print('Matrícula atual:', servidor['matricula'])
+
+                    servidor['nome'] = input('Novo nome: ')
+                    servidor['cargo'] = input('Novo cargo: ')
+                    servidor['orgao'] = input('Novo órgão: ')
+                    servidor['matricula'] = input('Nova matrícula: ')
+
+                    arq = open('dados.json', 'w', encoding='utf-8')
+                    json.dump(dados, arq, ensure_ascii=False, indent=4)
+                    arq.close()
+
+                    print('Servidor editado com sucesso.')
+
+                    encontrado = True
+
+                    break
+
+            if encontrado == False:
+                print('ID não encontrado.')
