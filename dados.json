@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "nome": "C",
+        "cargo": "B",
+        "orgao": "A",
+        "matricula": "321"
+    },
+    {
+        "id": 2,
+        "nome": "um",
+        "cargo": "dois",
+        "orgao": "tres",
+        "matricula": "4"
+    }
+]
