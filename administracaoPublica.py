@@ -140,6 +140,19 @@ while True:
 
         id_deletar = input ("Qual id deseja deletar?")
         encontrado = False
+    for servidor in dados:
+            if str (servidor['id']) == id_deletar:
+                  encontrado = True
+            print("id", servidor ['id'])
+            print("nome", servidor ['nome'])
+            print("orgao", servidor ['orgao'])
+            print("matricula", servidor ['matricula'])
+
+    confirmacao = input ("realmente deseja deletar esse servidor? (S/N) ou (s/n) ").lower
+    if confirmacao == 'S' or 's':
+          dados 
+
+
 
 
 ##parte d qm for fazer o delete
