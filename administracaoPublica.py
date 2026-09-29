@@ -180,9 +180,19 @@ while True:
             print("orgao", servidor ['orgao'])
             print("matricula", servidor ['matricula'])
 
-    confirmacao = input ("realmente deseja deletar esse servidor? (S/N) ou (s/n) ").lower
-    if confirmacao == 'S' or 's':
-          dados 
+        confirmacao = input ("realmente deseja deletar esse servidor? (S/N) ou (s/n) ").lower
+        if confirmacao == 'S' or 's':
+          dados.remove (servidor)
+          arq=open('dados.json', 'W', enconding = 'utf-8')
+          j.son.dump(dados,arq,ensure_ascii=False, indent=4)
+          arq.close()
+          print ("Servidor deletado com sucesso")
+        else 
+        print ("operação cancela")
+        break 
+        if encontrado == False
+            print ("ID não encontrado")
+
 
 
 
