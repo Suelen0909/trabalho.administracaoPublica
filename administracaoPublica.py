@@ -118,13 +118,14 @@ while True:
     elif opcao == "5":
         print("parte de pesquisa")
 
-##parte d qm for fazer a pesquisa
+##parte d qm for fazer a pesquisa ;carlos
+
 
     elif opcao == "6":
 
         print("parte de gerar o relatorio")
 
-##parte d qm for fazer o relatorio
+##parte d qm for fazer o relatorio ;carlos
 
 
 
