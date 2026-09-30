@@ -50,67 +50,78 @@ while True:
         print("\n=== CADASTRAR SERVIDOR PÚBLICO ===")
         print("ID:", proximo_id)
         
+        tem_numero = False
+        
         nome = input("Nome: ").strip()
         
-        tem_numero = False
-        for letra in nome:
-            if letra in "0123456789":
-                tem_numero = True
-                break
-        
-        if tem_numero:
-            print("Erro: o nome não pode conter números.")
+        if nome == "":
+            print("Erro: o nome não pode ficar em branco.")
         else:
-            cargo = input("Cargo: ").strip()
-            orgao = input("Órgão / Secretaria: ").strip()
-            matricula = input("Matrícula: ").strip()
+            for letra in nome:
+                if letra in "0123456789":
+                    tem_numero = True
+                    break
         
-            if nome == "" or cargo == "" or orgao == "" or matricula == "":
-                print("Erro: preencha todos os campos.")
+            if tem_numero:
+                print("Erro: o nome não pode conter números.")
             else:
-                novo = {
-                    "id": proximo_id,
-                    "nome": nome,
-                    "cargo": cargo,
-                    "orgao": orgao,
-                    "matricula": matricula
-                }
-                dados.append(novo)
-                
-                arq = open('dados.json', 'w', encoding='utf-8')
-                json.dump(dados, arq, ensure_ascii=False, indent=4)
-                arq.close()
-                print("Servidor cadastrado com sucesso.")
+                cargo = input("Cargo: ").strip()
+                if cargo == "":
+                    print("Erro: o cargo não pode ficar em branco.")
+                else:
+                    orgao = input("Órgão / Secretaria: ").strip()
+                    if orgao == "":
+                        print("Erro: o órgão não pode ficar em branco.")
+                    else:
+                        matricula = input("Matrícula: ").strip()
+                        if matricula == "":
+                            print("Erro: a matrícula não pode ficar em branco.")
+                        else:
+                            novo = {
+                                "id": proximo_id,
+                                "nome": nome,
+                                "cargo": cargo,
+                                "orgao": orgao,
+                                "matricula": matricula
+                            }
+                            dados.append(novo)
+                            arq = open('dados.json', 'w', encoding='utf-8')
+                            json.dump(dados, arq, ensure_ascii=False, indent=4)
+                            arq.close()
+                            print("Servidor cadastrado com sucesso.")
 
-   
+
+
     elif opcao == "2":
         print("parte de exibir")
 
 ##parte d qm for fazer o exibir
 
     elif opcao == "3":
- 
+        print("parte de editar")
+         
         arq = open('dados.json', 'r', encoding='utf-8')
         dados = json.load(arq)
         arq.close()
-
+        
         print("editar servidor")
-
+        
         id_editar = input("Digite o ID do servidor: ")
-
+        
         for servidor in dados:
             if str(servidor['id']) == id_editar:
-
+        
                 print("Nome atual:", servidor['nome'])
                 print("Cargo atual:", servidor['cargo'])
                 print("Órgão atual:", servidor['orgao'])
                 print("Matrícula atual:", servidor['matricula'])
+        
+                servidor['nome'] = input("Novo nome: ")
+                servidor['cargo'] = input("Novo cargo: ")
+                servidor['orgao'] = input("Novo órgão: ")
+                servidor['matricula'] = input("Nova matrícula: ")
 
-        servidor['nome'] = input("Novo nome: ")
-        servidor['cargo'] = input("Novo cargo: ")
-        servidor['orgao'] = input("Novo órgão: ")
-        servidor['matricula'] = input("Nova matrícula: ")
-
+##parte d qm for fazer a edicao
     elif opcao == "4":
         print("parte de deletar")
 
@@ -119,6 +130,8 @@ while True:
         print("parte de pesquisa")
 
 ##parte d qm for fazer a pesquisa
+
+
 
     elif opcao == "6":
 
@@ -137,5 +150,3 @@ while True:
     else:
 
          print("opcao invalido")
-
-
