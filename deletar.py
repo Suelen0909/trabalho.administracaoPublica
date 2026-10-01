@@ -1,54 +1,41 @@
-import json
-arq = open('dados.json', 'a', encoding='utf-8')
-arq.close()
-
 arq = open('dados.json', 'r', encoding='utf-8')
-conteudo = arq.read().strip()
+dados = json.load(arq)
 arq.close()
 
-if conteudo == "":
-            dados = []
-else:
-            arq = open('dados.json', 'r', encoding='utf-8')
-            dados = json.load(arq)
-            arq.close()
+id_deletar = input("Digite o ID do servidor: ")
 
-if len(dados) == 0:
-            print("Não existem servidores cadastrados.")
+encontrado = False
 
-else:
-            print('\n=== DELETAR SERVIDOR PÚBLICO ===')
+for servidor in dados:
 
-            id_deletar = input('Digite o ID do servidor: ')
+            if str(servidor['id']) == id_deletar:
 
-            encontrado = False
+                encontrado = True
 
-            for servidor in dados:
+                print("ID:", servidor['id'])
+                print("Nome:", servidor['nome'])
+                print("Cargo:", servidor['cargo'])
+                print("Órgão:", servidor['orgao'])
+                print("Matrícula:", servidor['matricula'])
 
-                if str(servidor['id']) == id_deletar:
+                confirmacao = input(
+                    "Tem certeza que deseja deletar? (s/n): "
+                ).lower()
 
-                    print('ID:', servidor['id'])
-                    print('Nome:', servidor['nome'])
-                    print('Cargo:', servidor['cargo'])
-                    print('Órgão:', servidor['orgao'])
-                    print('Matrícula:', servidor['matricula'])
+                if confirmacao == "s":
 
-                    confirmacao = input('Tem certeza que deseja deletar? (S/N): ')
-
-                    if confirmacao == 'S' or confirmacao == 's':
-
-                        dados.remove(servidor)
+                    dados.remove(servidor)
 
                     arq = open('dados.json', 'w', encoding='utf-8')
                     json.dump(dados, arq, ensure_ascii=False, indent=4)
                     arq.close()
 
-                    print('Servidor deletado com sucesso.')
-
-                elif confirmacao == 'N' or confirmacao == 'n':
-
-                    print(' servidor deletado .')
+                    print("Servidor deletado com sucesso.")
 
                 else:
+                    print("Operação cancelada.")
 
-                    print('Opção inválida. Digite S ou N.')
+                break
+
+if encontrado == False:
+            print("ID não encontrado.")
