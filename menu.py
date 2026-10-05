@@ -28,7 +28,6 @@ while True:
 ##parte d qm for fazer o cadastro
 
     elif opcao == "2":
-        print("parte de exibir")
 
 
     arq = open('dados.json', 'r', encoding='utf-8')
