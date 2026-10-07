@@ -5,7 +5,7 @@ import json
 while True:
 
 
-    print ("Administração pública\n")
+    print ("\nAdministração pública\n")
 
 
     print ("Escolha opção")
@@ -98,11 +98,10 @@ while True:
                             arq = open('dados.json', 'w', encoding='utf-8')
                             json.dump(dados, arq, ensure_ascii=False, indent=4)
                             arq.close()
-                            print("Servidor cadastrado com sucesso.")
+                            print("\nServidor cadastrado com sucesso.")
 
 
     elif opcao == "2":
-        print("parte de exibir")
 
 
         arq = open('dados.json', 'r', encoding='utf-8')
@@ -120,7 +119,7 @@ while True:
             arq.close()
 
 
-        print("\n=== SERVIDORES CADASTRADOS ===")
+        print("\n=== SERVIDORES CADASTRADOS ===\n")
 
 
         for servidor in dados:
@@ -145,7 +144,7 @@ while True:
 
 
         else:
-            print('\n  Editar servidor publico')
+            print('\nEditar servidor publico\n')
 
 
             id_editar = input('Digite o ID do servidor: ')
@@ -166,7 +165,7 @@ while True:
                     print('Matrícula atual:', servidor['matricula'])
 
 
-                    servidor['nome'] = input('Novo nome: ')
+                    servidor['nome'] = input('\nNovo nome: ')
                     servidor['cargo'] = input('Novo cargo: ')
                     servidor['orgao'] = input('Novo órgão: ')
                     servidor['matricula'] = input('Nova matrícula: ')
@@ -180,7 +179,7 @@ while True:
                     arq.close()
 
 
-                    print('Servidor editado com sucesso.')
+                    print('\nServidor editado com sucesso.')
 
 
                     break
@@ -190,11 +189,8 @@ while True:
 
 
                 print('ID não encontrado.')
+
     elif opcao == "4":
-
-
-        print("Deletar")
-
 
         arq = open('dados.json', 'r', encoding='utf-8')
         dados = json.load(arq)
@@ -210,7 +206,7 @@ while True:
         else:
 
 
-            id_deletar = input("Digite o ID do servidor: ")
+            id_deletar = input("\nDigite o ID do servidor: ")
 
 
             encontrado = False
@@ -222,7 +218,7 @@ while True:
                 if str(dados[i]['id']) == id_deletar:
 
 
-                    print("ID:", dados[i]['id'])
+                    print("\nID:", dados[i]['id'])
                     print("Nome:", dados[i]['nome'])
                     print("Cargo:", dados[i]['cargo'])
                     print("Órgão:", dados[i]['orgao'])
@@ -245,7 +241,7 @@ while True:
                         arq.close()
 
 
-                        print("Servidor deletado com sucesso.")
+                        print("\nServidor deletado com sucesso.")
 
 
                     elif confirmacao == 'N' or confirmacao == 'n':
@@ -253,23 +249,18 @@ while True:
 
                         print("Operação cancelada.")
 
-
                     else:
-
 
                         print("Opção inválida. Digite S ou N.")
 
-
                     encontrado = True
-
 
                     break
 
-
             if encontrado == False:
 
-
                 print("ID não encontrado.")
+
     elif opcao == "5":
 
 
@@ -279,7 +270,7 @@ while True:
 
 
         if conteudo == "":
-            print("Nenhum servidor cadastrado.")
+            print("\nNenhum servidor cadastrado.")
 
 
         else:
@@ -288,7 +279,7 @@ while True:
             arq.close()
 
 
-        id_busca = int(input("Digite o ID do servidor: "))
+        id_busca = int(input("\nDigite o ID do servidor: "))
 
 
         encontrado = False
@@ -331,9 +322,9 @@ while True:
                     relatorio.write(f"Matrícula: {servidor['matricula']}\n")
                     relatorio.write('------------------------\n')
            
-        print('Relatório gerado com sucesso!')
+        print('\nRelatório gerado com sucesso!')
     elif opcao == "0":
-        print("Saindo do sistema...")
+        print("\nSaindo do sistema...")
         break
 
 else:
